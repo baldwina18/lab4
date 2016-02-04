@@ -32,8 +32,9 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
     protected Button upperCaseButton;
     protected Button lowerCaseButton;
-    protected EditText textEdit;
-
+    protected EditText editText;
+    protected Button copyNameButton;
+    protected Spinner spinner;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -50,7 +51,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
         // create adapter with the strings
@@ -85,8 +86,9 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         lowerCaseButton = (Button) findViewById(R.id.button7);
         lowerCaseButton.setOnClickListener(this);
 
-        textEdit = (EditText) findViewById(R.id.editText);
-
+        editText = (EditText) findViewById(R.id.editText);
+        copyNameButton = (Button)findViewById(R.id.button2);
+        copyNameButton.setOnClickListener(this);
     }
 
     /**
@@ -119,15 +121,20 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-
+        String text;
+        String spinnerText;
         if(v.getId() == R.id.button6) {
 
-            textEdit.setText(textEdit.getText().toString().toUpperCase());
+            editText.setText(editText.getText().toString().toUpperCase());
 
         } else if (v.getId() == R.id.button7) {
 
-            textEdit.setText(textEdit.getText().toString().toLowerCase());
+            editText.setText(editText.getText().toString().toLowerCase());
 
+        } else if(v.getId() == R.id.button2) {
+            text = this.editText.getText().toString();
+            spinnerText = spinner.getSelectedItem().toString();
+            editText.setText(text+spinnerText);
         }
     }
 
