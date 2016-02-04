@@ -16,17 +16,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
+
+    protected Button upperCaseButton;
+    protected Button lowerCaseButton;
+    protected EditText textEdit;
 
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -73,6 +79,14 @@ public class TextModActivity extends ActionBarActivity {
         // define a listener for the spinner
         spinner.setOnItemSelectedListener(new MySpinnerListener());
 
+        upperCaseButton = (Button) findViewById(R.id.button6);
+        upperCaseButton.setOnClickListener(this);
+
+        lowerCaseButton = (Button) findViewById(R.id.button7);
+        lowerCaseButton.setOnClickListener(this);
+
+        textEdit = (EditText) findViewById(R.id.editText);
+
     }
 
     /**
@@ -103,6 +117,20 @@ public class TextModActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View v) {
+
+        if(v.getId() == R.id.button6) {
+
+            textEdit.setText(textEdit.getText().toString().toUpperCase());
+
+        } else if (v.getId() == R.id.button7) {
+
+            textEdit.setText(textEdit.getText().toString().toLowerCase());
+
+        }
+    }
+
     /**
      * class that handles our spinner's selection events
      */
@@ -125,7 +153,7 @@ public class TextModActivity extends ActionBarActivity {
          */
         @Override
         public void onNothingSelected(AdapterView<?> parentView) {
-            // your code here
+
         }
     }
 }
