@@ -25,13 +25,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity implements View.OnClickListener{
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
+
+    protected Button upperCaseButton;
+    protected Button lowerCaseButton;
+
     private Button button;
     private EditText editText;
     /**
@@ -85,6 +89,14 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         // define a listener for the spinner
         spinner.setOnItemSelectedListener(new MySpinnerListener());
 
+        upperCaseButton = (Button) findViewById(R.id.button6);
+        upperCaseButton.setOnClickListener(this);
+
+        lowerCaseButton = (Button) findViewById(R.id.button7);
+        lowerCaseButton.setOnClickListener(this);
+
+        editText = (EditText) findViewById(R.id.editText);
+
     }
 
     /**
@@ -122,6 +134,20 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         }
     }
 
+    @Override
+    public void onClick(View v) {
+
+        if(v.getId() == R.id.button6) {
+
+            textEdit.setText(textEdit.getText().toString().toUpperCase());
+
+        } else if (v.getId() == R.id.button7) {
+
+            textEdit.setText(textEdit.getText().toString().toLowerCase());
+
+        }
+    }
+
     /**
      * class that handles our spinner's selection events
      */
@@ -144,7 +170,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
          */
         @Override
         public void onNothingSelected(AdapterView<?> parentView) {
-            // your code here
+
         }
     }
 }
