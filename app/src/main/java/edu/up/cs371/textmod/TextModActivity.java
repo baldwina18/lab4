@@ -37,6 +37,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Spinner spinner;
     protected Button reverse;
     protected Button clear;
+
+    protected Button moveChars;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -95,6 +97,9 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         reverse.setOnClickListener(this);
         clear = (Button)findViewById(R.id.button);
         clear.setOnClickListener(this);
+
+        moveChars = (Button)findViewById(R.id.moveChars);
+        moveChars.setOnClickListener(this);
     }
 
     /**
@@ -151,6 +156,12 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
             editText.setText(rev);
         } else if (v.getId() == R.id.button) {
             editText.setText("");
+        }else if (v.getId() == R.id.moveChars) {
+            String curText = editText.getText().toString();
+            int lenvar = curText.length()-2;
+            int randi = (int) (Math.random() * lenvar) +1;
+            String moved = curText.substring(randi) + curText.substring(0, randi);
+            editText.setText(moved);
         }
     }
 
