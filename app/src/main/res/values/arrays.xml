@@ -9,9 +9,9 @@
         <item>@mipmap/kitten</item>
         <item>@mipmap/nuxoll</item>
         <item>@mipmap/vegdahl</item>
-        <item>@mipmap/sara_pic</item>
         <item>@mipmap/levi_banks</item>
         <item>@mipmap/alexa_pic</item>
+        <item>@mipmap/sara_pic</item>
     </array>
 
     <string-array name="spinner_names">
