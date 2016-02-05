@@ -10,6 +10,7 @@
         <item>@mipmap/nuxoll</item>
         <item>@mipmap/vegdahl</item>
         <item>@mipmap/levi_banks</item>
+        <item>@mipmap/alexa_pic</item>
     </array>
 
     <string-array name="spinner_names">
@@ -17,6 +18,7 @@
         <item>Dr. Andrew Nuxoll</item>
         <item>Dr. Steven Vegdahl</item>
         <item>Levi Banks</item>
+        <item>Dr. Alexa Baldwin</item>
     </string-array>
 
 </resources>
