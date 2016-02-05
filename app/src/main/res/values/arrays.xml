@@ -10,12 +10,16 @@
         <item>@mipmap/nuxoll</item>
         <item>@mipmap/vegdahl</item>
         <item>@mipmap/sara_pic</item>
+        <item>@mipmap/levi_banks</item>
+        <item>@mipmap/alexa_pic</item>
     </array>
 
     <string-array name="spinner_names">
         <item>Dr. Sleeping Kitten</item>
         <item>Dr. Andrew Nuxoll</item>
         <item>Dr. Steven Vegdahl</item>
+        <item>Levi Banks</item>
+        <item>Dr. Alexa Baldwin</item>
         <item>Sara Perkins, not a Dr.</item>
     </string-array>
 
