@@ -5,7 +5,6 @@ package edu.up.cs371.textmod;
  *
  * Allow text to be modified in simple ways with button-presses.
  */
-import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,8 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
@@ -35,9 +32,11 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
     protected Button upperCaseButton;
     protected Button lowerCaseButton;
-
-    private Button button;
-    private EditText editText;
+    protected EditText editText;
+    protected Button copyNameButton;
+    protected Spinner spinner;
+    protected Button reverse;
+    protected Button clear;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -51,16 +50,10 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
 
-        button =(Button)findViewById(R.id.button);
-        button.setOnClickListener(this);
-
-        editText = (EditText)findViewById(R.id.editText);
-        editText.setOnClickListener(this);
-
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
         // create adapter with the strings
@@ -96,7 +89,12 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         lowerCaseButton.setOnClickListener(this);
 
         editText = (EditText) findViewById(R.id.editText);
-
+        copyNameButton = (Button)findViewById(R.id.button2);
+        copyNameButton.setOnClickListener(this);
+        reverse = (Button)findViewById(R.id.button4);
+        reverse.setOnClickListener(this);
+        clear = (Button)findViewById(R.id.button);
+        clear.setOnClickListener(this);
     }
 
     /**
@@ -129,22 +127,30 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.button) {
-            editText.setText(" ");
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-
+        String text;
+        String spinnerText;
         if(v.getId() == R.id.button6) {
 
-            textEdit.setText(textEdit.getText().toString().toUpperCase());
+            editText.setText(editText.getText().toString().toUpperCase());
 
         } else if (v.getId() == R.id.button7) {
 
-            textEdit.setText(textEdit.getText().toString().toLowerCase());
+            editText.setText(editText.getText().toString().toLowerCase());
 
+        } else if(v.getId() == R.id.button2) {
+            text = this.editText.getText().toString();
+            spinnerText = spinner.getSelectedItem().toString();
+            editText.setText(text+spinnerText);
+        } else if (v.getId() == R.id.button4) {
+            String curText = editText.getText().toString();
+            String rev = "";
+            int len = curText.length();
+            for (int i=0; i<len; i++) {
+                rev = curText.charAt(i)+rev;
+            }
+            editText.setText(rev);
+        } else if (v.getId() == R.id.button) {
+            editText.setText("");
         }
     }
 
