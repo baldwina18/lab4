@@ -36,6 +36,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Button copyNameButton;
     protected Spinner spinner;
     protected Button reverse;
+    protected Button clear;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -92,6 +93,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         copyNameButton.setOnClickListener(this);
         reverse = (Button)findViewById(R.id.button4);
         reverse.setOnClickListener(this);
+        clear = (Button)findViewById(R.id.button);
+        clear.setOnClickListener(this);
     }
 
     /**
@@ -146,6 +149,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
                 rev = curText.charAt(i)+rev;
             }
             editText.setText(rev);
+        } else if (v.getId() == R.id.button) {
+            editText.setText("");
         }
     }
 
