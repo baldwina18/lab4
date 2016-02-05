@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/edittext_font_size"
             android:singleLine="true"
-            android:text="" />
+            android:text="@string/initial_text" />
 
         <Space
             android:layout_width="0sp"
