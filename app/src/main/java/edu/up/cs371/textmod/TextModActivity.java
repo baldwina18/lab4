@@ -37,6 +37,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Spinner spinner;
     protected Button reverse;
     protected Button clear;
+    protected Button ClearSpaceButton;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -95,6 +96,9 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         reverse.setOnClickListener(this);
         clear = (Button)findViewById(R.id.button);
         clear.setOnClickListener(this);
+
+        ClearSpaceButton = (Button)findViewById(R.id.ClearSpaceButton);
+        ClearSpaceButton.setOnClickListener(this);
     }
 
     /**
@@ -151,6 +155,12 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
             editText.setText(rev);
         } else if (v.getId() == R.id.button) {
             editText.setText("");
+        }
+        else if(v.getId() == R.id.ClearSpaceButton)
+        {
+            String curText = editText.getText().toString();
+            text = curText.replace(" ", "");
+            editText.setText(text);
         }
     }
 
