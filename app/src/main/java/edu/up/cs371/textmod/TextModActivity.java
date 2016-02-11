@@ -39,6 +39,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Button clear;
     protected Button ClearSpaceButton;
     protected Button altCaseButton;
+
+    protected Button moveChars;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -103,6 +105,9 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
         altCaseButton = (Button) findViewById(R.id.altCaseButton);
         altCaseButton.setOnClickListener(this);
+
+        moveChars = (Button)findViewById(R.id.moveChars);
+        moveChars.setOnClickListener(this);
     }
 
     /**
@@ -177,6 +182,12 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
                             editText.getText().toString().substring(i+1));
                 }
             }
+        }else if (v.getId() == R.id.moveChars) {
+            String curText = editText.getText().toString();
+            int lenvar = curText.length()-2;
+            int randi = (int) (Math.random() * lenvar) +1;
+            String moved = curText.substring(randi) + curText.substring(0, randi);
+            editText.setText(moved);
         }
     }
 
