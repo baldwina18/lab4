@@ -38,6 +38,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Button reverse;
     protected Button clear;
     protected Button ClearSpaceButton;
+    protected Button altCaseButton;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -99,6 +100,9 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
         ClearSpaceButton = (Button)findViewById(R.id.ClearSpaceButton);
         ClearSpaceButton.setOnClickListener(this);
+
+        altCaseButton = (Button) findViewById(R.id.altCaseButton);
+        altCaseButton.setOnClickListener(this);
     }
 
     /**
@@ -161,6 +165,18 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
             String curText = editText.getText().toString();
             text = curText.replace(" ", "");
             editText.setText(text);
+        } else if (v.getId() == R.id.altCaseButton) {
+            for(int i =0; i < editText.getText().toString().length(); i++) {
+                if (i %2 == 0) {
+                    editText.setText(editText.getText().toString().substring(0,i) +
+                            Character.toUpperCase(editText.getText().toString().charAt(i)) +
+                            editText.getText().toString().substring(i+1));
+                } else {
+                    editText.setText(editText.getText().toString().substring(0,i) +
+                            Character.toLowerCase(editText.getText().toString().charAt(i)) +
+                            editText.getText().toString().substring(i+1));
+                }
+            }
         }
     }
 
