@@ -41,6 +41,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Button altCaseButton;
 
     protected Button moveChars;
+    protected Button randomCharButton;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -108,6 +109,10 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
         moveChars = (Button)findViewById(R.id.moveChars);
         moveChars.setOnClickListener(this);
+
+
+        randomCharButton = (Button) findViewById(R.id.randomCharButton);
+        randomCharButton.setOnClickListener(this);
     }
 
     /**
@@ -188,6 +193,14 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
             int randi = (int) (Math.random() * lenvar) +1;
             String moved = curText.substring(randi) + curText.substring(0, randi);
             editText.setText(moved);
+        } else if (v.getId() == R.id.randomCharButton){
+            String myText = editText.getText().toString();
+            int myTextLen = myText.length();
+            char randChar = (char)(Math.random() *255);
+            int randInt = (int)(Math.random()*myTextLen);
+            String beg = myText.substring(0, randInt);
+            String end = myText.substring(randInt);
+            editText.setText(beg+randChar+end);
         }
     }
 
